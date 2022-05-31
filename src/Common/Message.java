@@ -1,4 +1,4 @@
-import Gson;
+import Gson.*;
 
 public class Message {
     String ip;
@@ -20,8 +20,12 @@ public class Message {
     }
 
     public Message(String json){
-        //hmmmm SUS
-        this = gson.fromJson(json, Message.class);
+        Message temp = new Message();
+        temp = gson.fromJson(json, Message.class);
+        this.ip = temp.ip;
+        this.type = temp.type;
+        this.topics = temp.topics;
+        this.content = temp.content;
     }
 
 

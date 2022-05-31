@@ -2,5 +2,8 @@
     "java.project.sourcePaths": [
         "src/Client",
         "src/GUI"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
     ]
 }
