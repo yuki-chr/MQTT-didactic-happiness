@@ -4,9 +4,16 @@ import com.google.gson.Gson;
 
 public class Message {
     String ip;
-    String type;
+    MessageType type;
     String[] topics;
     String content;
+
+    enum MessageType{
+        PING,
+        ACK,
+        UPDATE,
+        TEXT
+    }
 
     Gson gson = new Gson();
 
@@ -19,7 +26,7 @@ public class Message {
     }
 
     //use when creating a new Message
-    public Message(String ip, String type, String[] topics, String content){
+    public Message(String ip, MessageType type, String[] topics, String content){
         this.ip = ip;
         this.type = type;
         this.topics = topics;
