@@ -1,5 +1,4 @@
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class Window{
 
@@ -11,8 +10,8 @@ public class Window{
         frame = new JFrame(panel.title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+
         //set the start panel as content pane
-        
         frame.setContentPane(panel);
         frame.pack();
         frame.setVisible(true);

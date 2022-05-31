@@ -1,8 +1,10 @@
 import javax.swing.*;
 public abstract class ClassPanel extends JPanel{
-    
-    //variabili
+
+    //variables
     protected String title;
     protected int width, height;
+
+    //methods
 
 }
