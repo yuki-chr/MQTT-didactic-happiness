@@ -1,4 +1,6 @@
-import Gson.*;
+package Common;
+
+import com.google.gson.Gson;
 
 public class Message {
     String ip;
@@ -10,6 +12,10 @@ public class Message {
 
     public String serialize(){
         return gson.toJson(this);
+    }
+
+    public Message(){
+        //just for json constructor
     }
 
     public Message(String ip, String type, String[] topics, String content){
