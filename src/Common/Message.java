@@ -18,6 +18,7 @@ public class Message {
         //just for json constructor
     }
 
+    //use when creating a new Message
     public Message(String ip, String type, String[] topics, String content){
         this.ip = ip;
         this.type = type;
@@ -25,6 +26,7 @@ public class Message {
         this.content = content;
     }
 
+    //use when receiving Message as String
     public Message(String json){
         Message temp = new Message();
         temp = gson.fromJson(json, Message.class);
