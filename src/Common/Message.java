@@ -12,6 +12,7 @@ public class Message {
         PING,
         ACK,
         ERROR,
+        SUCCESS,
         REGISTER,
         LOGIN,
         UPDATE,
