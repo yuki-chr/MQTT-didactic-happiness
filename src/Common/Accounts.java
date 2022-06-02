@@ -12,4 +12,13 @@ public class Accounts {
 
         return m;
     }
+    public static Message login(String name, String password){
+        Message m = new Message();
+
+        m.type = MessageType.LOGIN;
+        m.topics[0] = "u/" + name;
+        m.content = org.apache.commons.codec.digest.DigestUtils.sha256Hex(password);
+
+        return m;
+    }
 }
