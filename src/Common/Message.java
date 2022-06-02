@@ -26,7 +26,7 @@ public class Message {
     }
 
     public Message(){
-        //just for json constructor
+        //just for json constructor and well when you need an empty Message
     }
 
     //use when creating a new Message
