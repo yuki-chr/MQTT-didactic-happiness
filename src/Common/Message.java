@@ -11,6 +11,9 @@ public class Message {
     enum MessageType{
         PING,
         ACK,
+        ERROR,
+        REGISTER,
+        LOGIN,
         UPDATE,
         TEXT
     }
