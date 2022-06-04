@@ -9,7 +9,7 @@ class ClientUDP{
         String a = System.in();
         InetAdress IP = InetAddress.getByName("192.168.1.254");
         byte[] msg = new byte[1024];
-        msg = a.getBytes()
+        msg = a.getBytes();
         socket = new DatagramSocket(6789);
         packet = new datagramPacket(msg,msg.length,IP,4445);
         datagramSocket.send(packet);
