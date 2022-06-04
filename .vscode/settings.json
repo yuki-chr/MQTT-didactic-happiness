@@ -1,7 +1,6 @@
 {
     "java.project.sourcePaths": [
         "src/GUI",
-        "src/Client",
         "src"
     ],
     "java.project.referencedLibraries": [
