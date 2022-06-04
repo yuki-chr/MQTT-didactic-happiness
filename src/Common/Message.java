@@ -8,7 +8,7 @@ public class Message {
     String[] topics;
     String content;
 
-    enum MessageType{
+    public enum MessageType{
         PING,
         ACK,
         ERROR,
