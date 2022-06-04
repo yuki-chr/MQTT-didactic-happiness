@@ -9,7 +9,7 @@ public class Window implements ActionListener{
     JFrame frame;
     JMenuBar mb;
     JMenu mHome, mTopic, mServer, mPlus, mSettings;
-    JMenuItem plusMess, plusCont, plusTop;
+    JMenuItem plusMess, plusTop;
 
     HomePanel home;
     TopicPanel topic;
@@ -35,19 +35,16 @@ public class Window implements ActionListener{
         mSettings = new JMenu("Settings");
 
         plusMess = new JMenuItem("New Message");
-        plusCont = new JMenuItem("New Contact");
         plusTop = new JMenuItem("New Topic");
 
         mHome.addActionListener(this);
         mTopic.addActionListener(this);
         mServer.addActionListener(this);
             plusMess.addActionListener(this);
-            plusCont.addActionListener(this);
             plusTop.addActionListener(this);
         mSettings.addActionListener(this);
 
         mPlus.add(plusMess);
-        mPlus.add(plusCont);
         mPlus.add(plusTop);
 
         mb.add(mHome);
@@ -98,9 +95,12 @@ public class Window implements ActionListener{
 
         }else if(e.getSource() == plusMess){
 
-        }else if(e.getSource() == plusCont){
+            plus.editMessage(t);
 
         }else if(e.getSource() == plusTop){
+
+            //some code
+            plus.editTopics(t);
 
         }else if(e.getSource() == mSettings){
 
