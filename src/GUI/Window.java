@@ -95,10 +95,11 @@ public class Window implements ActionListener{
 
         }else if(e.getSource() == plusMess){
 
-            replaceContent(messenger);
+            plus.editMessage(t);
 
         }else if(e.getSource() == plusTop){
 
+            //some code
             plus.editTopics(t);
 
         }else if(e.getSource() == mSettings){
