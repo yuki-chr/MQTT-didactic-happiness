@@ -8,7 +8,7 @@ public class Window implements ActionListener{
 
     JFrame frame;
     JMenuBar mb;
-    JMenu mHome, mTopic, mContacts, mServer, mPlus, mSettings;
+    JMenu mHome, mTopic, mServer, mPlus, mSettings;
     JMenuItem plusMess, plusCont, plusTop;
 
     HomePanel home;
@@ -30,7 +30,6 @@ public class Window implements ActionListener{
 
         mHome = new JMenu("Home");
         mTopic = new JMenu("Topic");
-        mContacts = new JMenu("Contacts");
         mServer = new JMenu("Server");
         mPlus = new JMenu(" + ");
         mSettings = new JMenu("Settings");
@@ -41,7 +40,6 @@ public class Window implements ActionListener{
 
         mHome.addActionListener(this);
         mTopic.addActionListener(this);
-        mContacts.addActionListener(this);
         mServer.addActionListener(this);
             plusMess.addActionListener(this);
             plusCont.addActionListener(this);
@@ -54,7 +52,6 @@ public class Window implements ActionListener{
 
         mb.add(mHome);
         mb.add(mTopic);
-        mb.add(mContacts);
         mb.add(mServer);
         mb.add(mPlus);
         mb.add(mSettings);
@@ -94,10 +91,6 @@ public class Window implements ActionListener{
         }else if(e.getSource() == mTopic){
 
             replaceContent(topic);
-
-        }else if(e.getSource() == mContacts){
-
-            replaceContent(contacts);
 
         }else if(e.getSource() == mServer){
 
