@@ -1,3 +1,5 @@
+package Client;
+
 import java.net.*;
 
 public class EchoServerUDP extends Thread {
