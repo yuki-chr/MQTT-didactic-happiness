@@ -3,7 +3,7 @@ import java.util.*;
 import java.io.*;
 import java.net.*;
 
-class ClientUDP{
+public class ClientRun{
     public static void main(String[] args){
         //Scanner in = new Scanner(System.in());
         System.out.print("Scrivi qualcosa : ");
