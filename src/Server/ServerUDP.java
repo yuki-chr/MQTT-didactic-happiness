@@ -1,32 +1,54 @@
-package Server;
+import java.net.*;
+//Scanner in = new Scanner(Syse.in);
+public class ServerUDP extends Thread {
 
-import java.text.SimpleDateFormat;
-import java.util.*;
-/**
- * Aggiungi qui una descrizione della classe ServerUDP
- * 
- * @author (il tuo nome) 
- * @version (un numero di versione o una data)
- */
-public class ServerUDP
-{
-    // variabili d'istanza - sostituisci l'esempio che segue con il tuo
-    // variabili d'istanza 
-    public static ServerSocketUDP server;
-    public static String timeStamp;
+    private DatagramSocket socket;
+    private boolean running;
+    private byte[] buf = new byte[256];
 
-    public static void main(String[] args)
-    {
-        timeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(Calendar.getInstance().getTime());
-        System.out.println(timeStamp + " UDP Server startup ver 1.0");
-    
-        server = new ServerSocketUDP();
-        do {
-                server.attendi();
-                //server.comunica("hello!");
-        } while(true);    
-
-    
+    public ServerUDP() {
+        try{
+            socket = new DatagramSocket(4445);
+        }catch(Exception err) {
+            System.out.println(err);
+        }
     }
 
+    public void run() {
+        running = true;
+
+        while (running) {
+            DatagramPacket packet 
+              = new DatagramPacket(buf, buf.length);
+            try{
+                socket.receive(packet);
+            }catch(Exception err) {
+                System.out.println("02 "+ err);
+            }
+            
+            //arguments of the message to return
+            InetAddress address = packet.getAddress();
+            int port = packet.getPort();
+            System.out.println("address: "+address+" port: "+port);
+
+            packet = new DatagramPacket(buf, buf.length, address, port);
+            String received 
+              = new String(packet.getData(), 0, packet.getLength()); 
+            
+            if (received.equals("end")) {
+                running = false;
+                continue;
+            }
+            try{
+                socket.send(packet);
+            }catch(Exception err) {
+                System.out.println(err);
+            }
+        }
+        socket.close();
+    }
+    public static void main(String[] args){
+        ServerUDP server = new ServerUDP();
+        server.start();
+    }
 }
