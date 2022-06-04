@@ -13,7 +13,6 @@ public class Window implements ActionListener{
 
     HomePanel home;
     TopicPanel topic;
-    ContactsPanel contacts;
     ServerPanel server;
     PlusPanel plus;
     SettingsPanel settings;
@@ -58,7 +57,6 @@ public class Window implements ActionListener{
         //initialise panels
         home = new HomePanel();
         topic = new TopicPanel();
-        contacts = new ContactsPanel();
         server = new ServerPanel();
         plus = new PlusPanel();
         settings = new SettingsPanel();
@@ -95,17 +93,22 @@ public class Window implements ActionListener{
 
         }else if(e.getSource() == plusMess){
 
-            plus.editMessage(t);
+            //plus.editMessage(t);
 
         }else if(e.getSource() == plusTop){
 
             //some code
-            plus.editTopics(t);
+            //plus.editTopics(t);
 
         }else if(e.getSource() == mSettings){
 
             replaceContent(settings);
 
         }
+    }
+
+
+    public static void main(String[] args) {
+        //new Window();
     }
 }

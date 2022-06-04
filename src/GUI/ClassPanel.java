@@ -4,7 +4,7 @@ public abstract class ClassPanel extends JPanel{
 
     //variables
     protected String title;
-    protected int width, height;
+    protected int width = 800, height = 600;
 
     //methods
     //?
