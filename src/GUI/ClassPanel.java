@@ -6,7 +6,7 @@ public abstract class ClassPanel extends JPanel{
     //variables
     protected String title;
     protected int width = 800, height = 600;
-    protected Font font = new Font("SansSerif", Font.BOLD, 17);
+    //protected Font font = new Font("SansSerif", Font.BOLD, 17);
 
     //methods
     //?
