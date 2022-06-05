@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 import Client.ClientRun;
 import Server.ServerRun;
@@ -19,7 +20,7 @@ public class HomePanel extends ClassPanel{
     JPanel description, servSpace;
     JButton startServer_btn, connectServer_btn;
     JTextField ip_input, port_input;
-    String text = "Hello World!";
+    String text = "Hello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\n";
     final static String newline = "\n";
     ServerRun serverRun;
 
@@ -32,11 +33,9 @@ public class HomePanel extends ClassPanel{
 
         //description panel
             description = new JPanel();
+            description.setBorder(new EmptyBorder(5, 5, 5, 5));
             description.setBackground(Util.bg);
-            description.setSize(Util.width-50, Util.height-50);
-            
-            
-            
+
             JLabel welcome = new JLabel("Benvenuto!", SwingConstants.CENTER);
             welcome.setFont(new Font("SansSerif", Font.BOLD, 24));
             welcome.setBackground(Util.bg);
@@ -54,11 +53,12 @@ public class HomePanel extends ClassPanel{
         //server part
             servSpace = new JPanel();
             servSpace.setLayout(new BorderLayout());
+            servSpace.setBorder(new EmptyBorder(5, 5, 5, 5));
+            
 
             //set server
                 JPanel connectP = new JPanel();
                 connectP.setLayout(new BorderLayout());
-                connectP.setBorder(BorderFactory.createLineBorder(Color.black));
 
                 JLabel l1 = new JLabel("Collegati a un server!", SwingConstants.CENTER);
                 l1.setFont(new Font("SansSerif", Font.BOLD, 16));
@@ -96,7 +96,6 @@ public class HomePanel extends ClassPanel{
             //create server
                 JPanel createP = new JPanel();
                 createP.setLayout(new BorderLayout());
-                createP.setBorder(BorderFactory.createLineBorder(Color.black));
 
                 JLabel l2 = new JLabel("Crea un server!", SwingConstants.CENTER);
                 l2.setFont(new Font("SansSerif", Font.BOLD, 16));
@@ -119,7 +118,8 @@ public class HomePanel extends ClassPanel{
                 * check se esiste veramente il server, guardare i ping
                 */
 
-        
+            connectP.setBorder(BorderFactory.createLineBorder(Color.black));
+            createP.setBorder(BorderFactory.createLineBorder(Color.black));
             servSpace.add(connectP, BorderLayout.NORTH);
             servSpace.add(createP, BorderLayout.CENTER);
             
@@ -137,9 +137,11 @@ public class HomePanel extends ClassPanel{
         if(e.getSource() == connectServer_btn){
 
             try {
+
                 InetAddress ip = InetAddress.getByName(ip_input.getText().trim());
                 int port = Integer.parseInt(port_input.getText().trim());
                 cr = new ClientRun(ip, port);
+
             } catch (UnknownHostException e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();

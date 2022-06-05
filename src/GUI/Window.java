@@ -29,7 +29,7 @@ public class Window implements ActionListener{
         mb = new JMenuBar();
 
         mHome = new JMenu("Home");
-        mMess = new JMenu("Topic");
+        mMess = new JMenu("Messages");
         mServer = new JMenu("Server");
         mPlus = new JMenu(" + ");
         mSettings = new JMenu("Settings");
