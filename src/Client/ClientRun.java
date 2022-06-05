@@ -1,7 +1,6 @@
 package Client;
 import Common.*;
 
-import java.util.*;
 import java.io.*;
 import java.net.*;
 
@@ -27,19 +26,18 @@ public class ClientRun extends Thread{
     public void run(){
         running = true;
         while (running){
-            DatagramPacket packet = new DatagramPacket(buf, buf.length);
-        try{
-            socket.receive(packet);
-            String a = packet.toString();
-            System.out.println("Server : " + a);
-        }catch(Exception e){
-            running = false;
-        }
+                DatagramPacket packet = new DatagramPacket(buf, buf.length);
+            try{
+                socket.receive(packet);
+                String a = packet.toString();
+                System.out.println("Server : " + a);
+            }catch(Exception e){
+                running = false;
+            }
         }
     }
 
     /*public static void main(String[] args){
-
         ClientRun client = new ClientRun(ip,port);
         client.start(); 
     }*/
