@@ -1,4 +1,7 @@
 import javax.swing.*;
+
+import Server.ServerRun;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -8,6 +11,7 @@ public class HomePanel extends ClassPanel{
     JButton startServer_btn;
     String text = "Hello World!";
     final static String newline = "\n";
+    ServerRun serverRun;
 
     public HomePanel(){
         this.title ="Home";
@@ -46,6 +50,7 @@ public class HomePanel extends ClassPanel{
 
         //btn
         startServer_btn = new JButton("Start");
+        startServer_btn.addActionListener(this);
 
         //add to panel
         JPanel p = new JPanel();
@@ -61,7 +66,11 @@ public class HomePanel extends ClassPanel{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        
+        if(e.getSource() == startServer_btn){
+
+            serverRun = new ServerRun();
+
+        }
         
     }
 

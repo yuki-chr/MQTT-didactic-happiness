@@ -109,6 +109,6 @@ public class Window implements ActionListener{
 
 
     public static void main(String[] args) {
-        //new Window(new HomePanel());
+        //new Window(home);
     }
 }
