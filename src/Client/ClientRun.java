@@ -4,6 +4,8 @@ import java.util.*;
 import java.net.*;
 
 public class ClientRun{
+    InetAddress ip;
+    int port;
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         System.out.print("Scrivi qualcosa : ");
@@ -23,5 +25,10 @@ public class ClientRun{
             System.out.println("problems with sending stuff: " + e);
         }
         in.close();
+    }
+
+    public ClientRun(InetAddress ip, int port){
+        this.ip = ip;
+        this.port = port;
     }
 }
