@@ -24,15 +24,19 @@ public class MessagePanel extends ClassPanel {
         this.title = "Messages";
 
         p1 = new JPanel();
+        p1.setSize(500, 500);
+        
 
         p1.setLayout(new GridLayout(0,1));
-        
+        p1.add(new JLabel("Hello World", SwingConstants.CENTER));
 
 
         JScrollPane scrollPane = new JScrollPane(p1); 
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
         scrollPane.setBounds(50, 30, 600, 400); 
+
+        this.add(p1);
     }
 
 

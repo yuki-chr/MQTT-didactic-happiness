@@ -16,6 +16,15 @@ public class ClientRun extends Thread{
         this.serverPort = port;
     }
     
+    public ClientRun(){
+
+    }
+    
+    public void startClient(InetAddress ip, int port){
+        this.serverIP = ip;
+        this.serverPort = port;
+    }
+
     public void sendMessage(Message MSG) throws IOException{
         byte[] msg = MSG.serialize().getBytes();
         DatagramPacket Out = new DatagramPacket(msg, msg.length, serverIP, serverPort);

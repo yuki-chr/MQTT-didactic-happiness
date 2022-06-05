@@ -4,6 +4,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import Client.ClientRun;
+
 import java.awt.event.*;
 
 public class Window implements ActionListener{
@@ -18,6 +20,7 @@ public class Window implements ActionListener{
     static ServerPanel server;
     static PlusPanel plus;
     static SettingsPanel settings;
+    static ClientRun cr;
 
     public Window(ClassPanel panel){
         //this.panel = panel;
@@ -58,7 +61,7 @@ public class Window implements ActionListener{
 
         //initialise panels
         //home = new HomePanel(cr);
-        //messages = new MessagePanel();
+        messages = new MessagePanel(cr);
         //TestPanel test = new TestPanel();
         //server = new ServerPanel();
         //plus = new PlusPanel();
@@ -114,7 +117,8 @@ public class Window implements ActionListener{
 
 
     public static void main(String[] args) {
-        home = new HomePanel(null);
+        cr = new ClientRun();
+        home = new HomePanel(cr);
         new Window(home);
     }
 }

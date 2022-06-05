@@ -139,7 +139,7 @@ public class HomePanel extends ClassPanel{
             try {
                 InetAddress ip = InetAddress.getByName(ip_input.getText().trim());
                 int port = Integer.parseInt(port_input.getText().trim());
-                cr = new ClientRun(ip, port);
+                cr.startClient(ip, port);
                 Window.replaceContent(Window.messages);
 
             } catch (UnknownHostException e1) {
