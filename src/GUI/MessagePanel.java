@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import Client.ClientRun;
+import Common.Message;
 /*
  * qui vengono visualizzati i messaggi grazie a un panel con un jScrollPane.
  * i messaggi ricevuti devono essere presentati in ordine, e devono indicare:
@@ -27,6 +28,7 @@ public class MessagePanel extends ClassPanel {
         p1.setLayout(new GridLayout(0,1));
         
 
+
         JScrollPane scrollPane = new JScrollPane(p1); 
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
@@ -40,5 +42,12 @@ public class MessagePanel extends ClassPanel {
         // TODO Auto-generated method stub
         
     }
+
+    public void displayMessage(Message mess){
+        JPanel panel = new JPanel();
+        //some code to display message data here
+        p1.add(panel);
+    }
+    
     
 }
