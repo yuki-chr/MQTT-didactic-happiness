@@ -1,10 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class HomePanel extends ClassPanel{
 
-    JPanel description, editServ;
-    String text;
+    JPanel description, servSpace;
+    JButton startServer_btn;
+    String text = "Hello World!";
     final static String newline = "\n";
 
     public HomePanel(){
@@ -13,10 +15,10 @@ public class HomePanel extends ClassPanel{
         this.setLayout(new FlowLayout());
 
         description = new JPanel();
-        editServ = new JPanel();
+        servSpace = new JPanel();
 
         writeDescription();
-        editServPanel();
+        startServer();
         
         
     }
@@ -30,12 +32,37 @@ public class HomePanel extends ClassPanel{
         textArea.setFont(new Font("SansSerif", Font.BOLD, 18));
         textArea.setEditable(false);
         textArea.append(text);
-        
-        //some code 
+
+        description.setLayout(new BorderLayout());
+        description.add(welcome, BorderLayout.NORTH);
+        description.add(textArea, BorderLayout.CENTER);
+        //some code
+
     }
 
-    public void editServPanel(){
+    public void startServer(){
+        JLabel label = new JLabel("Lancia il server!", SwingConstants.CENTER);
+        label.setFont(new Font("SansSerif", Font.BOLD, 18));
 
+        //btn
+        startServer_btn = new JButton("Start");
+
+        //add to panel
+        JPanel p = new JPanel();
+        p.setLayout(new BorderLayout());
+        p.add(label, BorderLayout.NORTH);
+        p.add(startServer_btn, BorderLayout.CENTER);
+
+        servSpace.setLayout(new BorderLayout());
+        servSpace.add(p, BorderLayout.CENTER);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        
+        
     }
 
 

@@ -1,12 +1,14 @@
 package Common;
 
 import com.google.gson.Gson;
+import java.net.*;
 
 public class Message {
-    String ip;
-    MessageType type;
-    String[] topics;
-    String content;
+    public InetAddress ip;
+    public MessageType type;
+    public String[] topics;
+    public String content;
+    //any programmer looking in here don't kill me
 
     public enum MessageType{
         PING,
@@ -30,7 +32,7 @@ public class Message {
     }
 
     //use when creating a new Message
-    public Message(String ip, MessageType type, String[] topics, String content){
+    public Message(InetAddress ip, MessageType type, String[] topics, String content){
         this.ip = ip;
         this.type = type;
         this.topics = topics;
