@@ -2,8 +2,7 @@ package Client;
 import Common.*;
 
 import java.util.*;
-import java.io.IOError;
-import java.io.IOException;
+import java.io.*;
 import java.net.*;
 
 public class ClientRun extends Thread{
@@ -35,27 +34,24 @@ public class ClientRun extends Thread{
     }
 
 
-
-
     public static void main(String[] args){
-        ClientRun ClientRun = new ClientRun(ip, port);
         Scanner in = new Scanner(System.in);
         System.out.print("Scrivi qualcosa : ");
         String txt = in.nextLine();
         byte[] msg = new byte[1024];
         msg = txt.getBytes();
         //String txtIP = "192.168.1.254";
-         try{
-            DatagramPacket packet = new DatagramPacket(msg,msg.length,ip,port);
+
+        InetAddress ServerIP;
+        DatagramSocket socket;
+        try{
+            ServerIP = InetAddress.getByName("79.52.133.115");
+            socket = new DatagramSocket(6789);
+            DatagramPacket packet = new DatagramPacket(msg,msg.length,ServerIP,4445);
             socket.send(packet);
         }catch(Exception e){
             System.out.println("problems with sending stuff: " + e);
         }
         in.close();
-    }
-
-    public ClientRun(InetAddress ip, int port){
-        this.ip = ip;
-        this.port = port;
     }
 }
