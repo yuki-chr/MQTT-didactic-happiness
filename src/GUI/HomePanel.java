@@ -5,10 +5,14 @@ import Server.ServerRun;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+/*
+ * rivedere i bottoni server
+ */
+
 public class HomePanel extends ClassPanel{
 
     JPanel description, servSpace;
-    JButton startServer_btn;
+    JButton startServer_btn, connectServer_btn;
     String text = "Hello World!";
     final static String newline = "\n";
     ServerRun serverRun;
@@ -20,14 +24,6 @@ public class HomePanel extends ClassPanel{
 
         description = new JPanel();
         servSpace = new JPanel();
-
-        writeDescription();
-        startServer();
-        
-        
-    }
-
-    public void writeDescription(){
 
         JLabel welcome = new JLabel("Benvenuto!", SwingConstants.CENTER);
         welcome.setFont(new Font("SansSerif", Font.BOLD, 24));
@@ -42,15 +38,14 @@ public class HomePanel extends ClassPanel{
         description.add(textArea, BorderLayout.CENTER);
         //some code
 
-    }
-
-    public void startServer(){
         JLabel label = new JLabel("Lancia il server!", SwingConstants.CENTER);
         label.setFont(new Font("SansSerif", Font.BOLD, 18));
 
         //btn
         startServer_btn = new JButton("Start");
         startServer_btn.addActionListener(this);
+        connectServer_btn = new JButton("Connect");
+        connectServer_btn.addActionListener(this);
 
         //add to panel
         JPanel p = new JPanel();
@@ -60,6 +55,19 @@ public class HomePanel extends ClassPanel{
 
         servSpace.setLayout(new BorderLayout());
         servSpace.add(p, BorderLayout.CENTER);
+        
+        this.add(description);
+        this.add(servSpace);
+    }
+
+    public void writeDescription(){
+
+        
+
+    }
+
+    public void startServer(){
+        
 
     }
 
@@ -68,7 +76,7 @@ public class HomePanel extends ClassPanel{
         // TODO Auto-generated method stub
         if(e.getSource() == startServer_btn){
 
-            serverRun = new ServerRun();
+            //serverRun = new ServerRun();
 
         }
         
