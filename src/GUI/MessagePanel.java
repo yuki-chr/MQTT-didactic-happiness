@@ -17,6 +17,7 @@ import Common.Message;
 public class MessagePanel extends ClassPanel {
 
     JPanel p1;
+    JButton sendMessage_btn;
     
 
     public MessagePanel(ClientRun cr){
@@ -28,28 +29,44 @@ public class MessagePanel extends ClassPanel {
         
 
         p1.setLayout(new GridLayout(0,1));
-        p1.add(new JLabel("Hello World", SwingConstants.CENTER));
-
-
-        JScrollPane scrollPane = new JScrollPane(p1); 
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
-        scrollPane.setBounds(50, 30, 600, 400); 
+        //p1.add(new JLabel("Hello World", SwingConstants.CENTER));
 
         this.add(p1);
+
+        JScrollPane scrollPane = new JScrollPane(p1);
+        scrollPane.setAlignmentX(JScrollPane.CENTER_ALIGNMENT);
+        scrollPane.setAlignmentY(JScrollPane.CENTER_ALIGNMENT);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
+        scrollPane.setBounds(50, 30, 600, 400);
+
+        p1.add(scrollPane); 
+
+        
+
+        JPanel sendP = new JPanel();
+        sendMessage_btn = new JButton("Scrivi Messaggio");
+        sendMessage_btn.addActionListener(this);
+        sendMessage_btn.setAlignmentX(JScrollPane.RIGHT_ALIGNMENT);
+        sendMessage_btn.setAlignmentY(JScrollPane.BOTTOM_ALIGNMENT);
+        sendP.add(sendMessage_btn);
+        p1.add(sendP);
     }
 
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        if(e.getSource() == sendMessage_btn){
+            Window.replaceContent(Window.sendmessages);
+        }
         
     }
 
     public void displayMessage(Message mess){
         JPanel panel = new JPanel();
         //some code to display message data here
+        
         p1.add(panel);
     }
     

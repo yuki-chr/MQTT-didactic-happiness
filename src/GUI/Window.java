@@ -17,6 +17,7 @@ public class Window implements ActionListener{
 
     static HomePanel home;
     static MessagePanel messages;
+    static SendMessagePanel sendmessages;
     static ServerPanel server;
     static PlusPanel plus;
     static SettingsPanel settings;
