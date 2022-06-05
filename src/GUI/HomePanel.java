@@ -28,5 +28,9 @@ public class HomePanel extends ClassPanel{
         textArea.append(text);
     }
 
+    public void editServPanel(){
+        
+    }
+
 
 }
