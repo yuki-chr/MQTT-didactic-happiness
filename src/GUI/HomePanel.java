@@ -137,7 +137,6 @@ public class HomePanel extends ClassPanel{
         if(e.getSource() == connectServer_btn){
 
             try {
-
                 InetAddress ip = InetAddress.getByName(ip_input.getText().trim());
                 int port = Integer.parseInt(port_input.getText().trim());
                 cr = new ClientRun(ip, port);
