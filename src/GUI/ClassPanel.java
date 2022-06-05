@@ -1,7 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 //a generic parent class for many child classes, contents of the main window
-public abstract class ClassPanel extends JPanel{
+public abstract class ClassPanel extends JPanel implements ActionListener{
 
     //variables
     protected String title;
