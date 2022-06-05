@@ -3,6 +3,8 @@ import java.util.Random;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Client.ClientRun;
+
 import java.awt.event.*;
 import java.awt.*;
 
@@ -23,9 +25,8 @@ public class TestPanel extends ClassPanel implements ActionListener{
     JButton rSubmitButton;
 
 
-    public TestPanel(){
-
-        
+    public TestPanel(ClientRun cr){
+        super(cr);        
 
         JPanel finalPanel = new JPanel();
         finalPanel.setLayout(new GridLayout(0,1));

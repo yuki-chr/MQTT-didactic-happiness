@@ -2,6 +2,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
 import java.awt.event.*;
 
 public class Window implements ActionListener{
@@ -20,7 +21,7 @@ public class Window implements ActionListener{
     public Window(ClassPanel panel){
         //this.panel = panel;
         frame = new JFrame(panel.title);
-        frame.setSize(800,600);
+        frame.setSize(Util.width, Util.height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
 
@@ -55,9 +56,9 @@ public class Window implements ActionListener{
         frame.setJMenuBar(mb);
 
         //initialise panels
-        home = new HomePanel();
-        messages = new MessagePanel();
-        TestPanel test = new TestPanel();
+        //home = new HomePanel(cr);
+        //messages = new MessagePanel();
+        //TestPanel test = new TestPanel();
         //server = new ServerPanel();
         //plus = new PlusPanel();
         //settings = new SettingsPanel();
@@ -110,6 +111,7 @@ public class Window implements ActionListener{
 
 
     public static void main(String[] args) {
-        new Window(new HomePanel());
+        
+        new Window(new HomePanel(null));
     }
 }
