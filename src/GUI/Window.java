@@ -2,12 +2,13 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import java.awt.event.*;
 
 public class Window implements ActionListener{
 
-    JFrame frame;
+    static JFrame frame;
     JMenuBar mb;
     JMenu mHome, mMess, mServer, mPlus, mSettings;
     JMenuItem plusMess, plusTop;
@@ -71,7 +72,7 @@ public class Window implements ActionListener{
     }
 
     //method to refresh window: it replaces old panel with a new one
-    public void replaceContent(ClassPanel newPanel){
+    public static void replaceContent(ClassPanel newPanel){
         frame.getContentPane().removeAll();
         frame.setContentPane(newPanel);
         frame.revalidate();
@@ -87,11 +88,11 @@ public class Window implements ActionListener{
 
         }else if(e.getSource() == mMess){
 
-            //replaceContent(messages);
+            replaceContent(messages);
 
         }else if(e.getSource() == mServer){
 
-           // replaceContent(server);
+           replaceContent(server);
 
         }else if(e.getSource() == plusMess){
 
@@ -100,6 +101,8 @@ public class Window implements ActionListener{
         }else if(e.getSource() == plusTop){
 
             //some code
+            String getMessage = JOptionPane.showInputDialog(frame, "Enter your message");
+            JOptionPane.showMessageDialog(frame, "Your message: "+getMessage);
             //plus.editTopics(t);
 
         }else if(e.getSource() == mSettings){
