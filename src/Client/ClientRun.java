@@ -24,21 +24,26 @@ public class ClientRun extends Thread{
 
     @Override 
     public void run(){
+        Pinger ping = new Pinger(socket, serverIP, serverPort);
+        ping.start();
+        
         running = true;
         while (running){
-                DatagramPacket packet = new DatagramPacket(buf, buf.length);
+            DatagramPacket packet = new DatagramPacket(buf, buf.length);
             try{
                 socket.receive(packet);
-                String a = packet.toString();
-                System.out.println("Server : " + a);
+                
             }catch(Exception e){
                 running = false;
             }
+            String tomato = packet.toString();
+            System.out.println("Server : " + tomato);
         }
     }
 
     /*public static void main(String[] args){
         ClientRun client = new ClientRun(ip,port);
         client.start(); 
+        
     }*/
 }

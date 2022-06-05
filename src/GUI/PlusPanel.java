@@ -2,6 +2,7 @@ import Common.Message;
 import Common.Message.MessageType;
 
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 import Client.ClientRun;
 
@@ -14,7 +15,8 @@ public class PlusPanel extends ClassPanel {
     static void editTopics(String t, ClientRun cr){
         String[] ts = t.split(" ");
         Message m = new Message(null,MessageType.UPDATE,ts,"");
-        cr.sendMessage(m);
+        try{cr.sendMessage(m);}catch(IOException e){System.out.println("IOExc. " + e);}
+        
     }
 
     @Override
