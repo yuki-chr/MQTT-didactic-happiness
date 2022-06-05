@@ -144,14 +144,6 @@ public class ServerRun extends Thread {
             rebuf = reply.serialize().getBytes();
             packet = new DatagramPacket(rebuf, rebuf.length, address, port);
 
-            /*
-        
-            REGISTER,
-            LOGIN,
-            UPDATE,
-            TEXT
-             */
-
             //constructing the package and sending it back
 
             try{
