@@ -1,3 +1,5 @@
+package Server;
+
 import java.net.*;
 //Scanner in = new Scanner(Syse.in);
 public class ServerRun extends Thread {
@@ -48,7 +50,7 @@ public class ServerRun extends Thread {
         socket.close();
     }
     public static void main(String[] args){
-        ServerUDP server = new ServerUDP();
+        ServerRun server = new ServerRun();
         server.start();
     }
 }
