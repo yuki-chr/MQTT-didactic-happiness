@@ -22,10 +22,20 @@ public class HomePanel extends ClassPanel{
     }
 
     public void writeDescription(){
+
+        JLabel welcome = new JLabel("Benvenuto!", SwingConstants.CENTER);
+        welcome.setFont(new Font("SansSerif", Font.BOLD, 24));
+
         JTextArea textArea = new JTextArea(5, 20);
-        //JScrollPane scrollPane = new JScrollPane(textArea); 
+        textArea.setFont(new Font("SansSerif", Font.BOLD, 18));
         textArea.setEditable(false);
         textArea.append(text);
+        
+        //some code 
+    }
+
+    public void editServPanel(){
+
     }
 
 
