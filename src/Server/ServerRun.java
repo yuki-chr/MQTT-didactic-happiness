@@ -1,12 +1,12 @@
 import java.net.*;
 //Scanner in = new Scanner(Syse.in);
-public class ServerUDP extends Thread {
+public class ServerRun extends Thread {
 
     private DatagramSocket socket;
     private boolean running;
     private byte[] buf = new byte[256];
 
-    public ServerUDP() {
+    public ServerRun() {
         try{
             socket = new DatagramSocket(4445);
         }catch(Exception err) {
