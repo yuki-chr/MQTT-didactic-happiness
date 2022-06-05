@@ -1,5 +1,6 @@
 package Client;
 import Common.*;
+import Common.Message.MessageType;
 
 import java.io.*;
 import java.net.*;
@@ -50,9 +51,12 @@ public class ClientRun extends Thread{
         }
     }
 
-    /*public static void main(String[] args){
-        ClientRun client = new ClientRun(ip,port);
-        client.start(); 
+    public static void main(String[] args) throws IOException{
+        String i = "79.52.133.115";
+        InetAddress ia = InetAddress.getByName(i);
+        ClientRun client = new ClientRun(ia,4445);
+        client.start();
+        client.sendMessage(new Message(null,MessageType.PING,null,null));
         
-    }*/
+    }
 }
