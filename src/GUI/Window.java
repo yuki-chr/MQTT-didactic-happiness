@@ -8,11 +8,11 @@ public class Window implements ActionListener{
 
     JFrame frame;
     JMenuBar mb;
-    JMenu mHome, mTopic, mServer, mPlus, mSettings;
+    JMenu mHome, mMess, mServer, mPlus, mSettings;
     JMenuItem plusMess, plusTop;
 
     HomePanel home;
-    TopicPanel topic;
+    MessagePanel messages;
     ServerPanel server;
     PlusPanel plus;
     SettingsPanel settings;
@@ -28,7 +28,7 @@ public class Window implements ActionListener{
         mb = new JMenuBar();
 
         mHome = new JMenu("Home");
-        mTopic = new JMenu("Topic");
+        mMess = new JMenu("Topic");
         mServer = new JMenu("Server");
         mPlus = new JMenu(" + ");
         mSettings = new JMenu("Settings");
@@ -37,7 +37,7 @@ public class Window implements ActionListener{
         plusTop = new JMenuItem("New Topic");
 
         mHome.addActionListener(this);
-        mTopic.addActionListener(this);
+        mMess.addActionListener(this);
         mServer.addActionListener(this);
             plusMess.addActionListener(this);
             plusTop.addActionListener(this);
@@ -47,7 +47,7 @@ public class Window implements ActionListener{
         mPlus.add(plusTop);
 
         mb.add(mHome);
-        mb.add(mTopic);
+        mb.add(mMess);
         mb.add(mServer);
         mb.add(mPlus);
         mb.add(mSettings);
@@ -56,14 +56,15 @@ public class Window implements ActionListener{
 
         //initialise panels
         home = new HomePanel();
-        topic = new TopicPanel();
-        server = new ServerPanel();
-        plus = new PlusPanel();
-        settings = new SettingsPanel();
+        messages = new MessagePanel();
+        TestPanel test = new TestPanel();
+        //server = new ServerPanel();
+        //plus = new PlusPanel();
+        //settings = new SettingsPanel();
 
         //set the start panel as content pane
         frame.setContentPane(panel);
-        frame.pack();
+        //frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
     }
@@ -83,13 +84,13 @@ public class Window implements ActionListener{
 
             replaceContent(home);
 
-        }else if(e.getSource() == mTopic){
+        }else if(e.getSource() == mMess){
 
-            replaceContent(topic);
+            //replaceContent(messages);
 
         }else if(e.getSource() == mServer){
 
-            replaceContent(server);
+           // replaceContent(server);
 
         }else if(e.getSource() == plusMess){
 
@@ -102,13 +103,13 @@ public class Window implements ActionListener{
 
         }else if(e.getSource() == mSettings){
 
-            replaceContent(settings);
+            //replaceContent(settings);
 
         }
     }
 
 
     public static void main(String[] args) {
-        //new Window(home);
+        new Window(new HomePanel());
     }
 }
