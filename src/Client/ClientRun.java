@@ -6,15 +6,20 @@ import java.io.*;
 import java.net.*;
 
 public class ClientRun extends Thread{
-    InetAddress ip;
-    int port;
+    InetAddress serverIP;
+    int serverPort;
     DatagramSocket socket;
     private boolean running;
     private byte[] buf = new byte[1024];
 
+    public ClientRun(InetAddress ip, int port){
+        this.serverIP = ip;
+        this.serverPort = port;
+    }
+    
     public void sendMessage(Message MSG) throws IOException{
         byte[] msg = MSG.serialize().getBytes();
-        DatagramPacket Out = new DatagramPacket(msg,msg.length,ip,port);
+        DatagramPacket Out = new DatagramPacket(msg, msg.length, serverIP, serverPort);
         socket.send(Out);
     }
 
@@ -33,25 +38,9 @@ public class ClientRun extends Thread{
         }
     }
 
+    /*public static void main(String[] args){
 
-    public static void main(String[] args){
-        Scanner in = new Scanner(System.in);
-        System.out.print("Scrivi qualcosa : ");
-        String txt = in.nextLine();
-        byte[] msg = new byte[1024];
-        msg = txt.getBytes();
-        //String txtIP = "192.168.1.254";
-
-        InetAddress ServerIP;
-        DatagramSocket socket;
-        try{
-            ServerIP = InetAddress.getByName("79.52.133.115");
-            socket = new DatagramSocket(6789);
-            DatagramPacket packet = new DatagramPacket(msg,msg.length,ServerIP,4445);
-            socket.send(packet);
-        }catch(Exception e){
-            System.out.println("problems with sending stuff: " + e);
-        }
-        in.close();
-    }
+        ClientRun client = new ClientRun(ip,port);
+        client.start(); 
+    }*/
 }
