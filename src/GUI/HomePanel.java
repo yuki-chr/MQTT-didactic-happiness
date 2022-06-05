@@ -5,6 +5,8 @@ import Server.ServerRun;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /*
  * rivedere i bottoni server
@@ -132,9 +134,20 @@ public class HomePanel extends ClassPanel{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        if(e.getSource() == startServer_btn){
+        if(e.getSource() == connectServer_btn){
 
-            //serverRun = new ServerRun();
+            try {
+                InetAddress ip = InetAddress.getByName(ip_input.getText().trim());
+                int port = Integer.parseInt(port_input.getText().trim());
+                cr = new ClientRun(ip, port);
+            } catch (UnknownHostException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+
+        }else if(e.getSource() == startServer_btn){
+
+            new ServerRun();
 
         }
         
