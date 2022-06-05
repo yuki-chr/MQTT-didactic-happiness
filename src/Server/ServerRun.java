@@ -30,12 +30,12 @@ public class ServerRun extends Thread {
             System.out.println(err);
         }
 
-        file = "users_list.json";
+        file = "src/Server/users_list.txt";
         String json;
 
         try {
-            json = Files.readAllBytes(Paths.get(file)).toString();
-            //System.out.println(json);
+            json = Files.readString(Paths.get(file));
+            System.out.println("read: "+json);
             users = new Users(json);
         } catch (IOException e) {
             // TODO Auto-generated catch block

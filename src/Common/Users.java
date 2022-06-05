@@ -6,7 +6,7 @@ import java.util.Map;
 import com.google.gson.Gson;
 
 public class Users{
-    Map<String, String> users = new HashMap<String, String>();
+    public Map<String, String> users = new HashMap<String, String>();
     Gson gson = new Gson();
 
     public String getHashPw(String user){
@@ -22,7 +22,12 @@ public class Users{
     }
 
     public String serialize(){
-        return gson.toJson(this);
+        //return gson.toJson(this);
+        StringBuilder sb = new StringBuilder();
+        for(String u : users.keySet()){
+            sb.append(u + ":" + users.get(u) + "\n");
+        }
+        return sb.toString();
     }
 
     public Users(){
@@ -30,8 +35,10 @@ public class Users{
     }
 
     public Users(String json){
-        Users temp = new Users();
-        temp = gson.fromJson(json, Users.class);
-        this.users = temp.users;
+        String[] set = json.split("\n");
+        for(String s : set){
+            String[] subset = s.split(":");
+            users.put(subset[0], subset[1]);
+        }
     }
 }
