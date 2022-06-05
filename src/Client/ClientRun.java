@@ -10,7 +10,7 @@ public class ClientRun extends Thread{
     int port;
     DatagramSocket socket;
     private boolean running;
-    private byte[] buf = new byte[256];
+    private byte[] buf = new byte[1024];
 
     public void sendMessage(Message MSG) throws IOException{
         byte[] msg = MSG.serialize().getBytes();
@@ -18,7 +18,7 @@ public class ClientRun extends Thread{
         socket.send(Out);
     }
 
-    @Override
+    @Override 
     public void run(){
         running = true;
         while (running){
