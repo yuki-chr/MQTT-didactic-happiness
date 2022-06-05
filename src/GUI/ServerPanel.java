@@ -1,8 +1,11 @@
 import java.awt.event.ActionEvent;
 
+import Client.ClientRun;
+
 public class ServerPanel extends ClassPanel {
 
-    public ServerPanel(){
+    public ServerPanel(ClientRun cr){
+        super(cr);
         
     }
 

@@ -8,7 +8,7 @@ import Client.ClientRun;
 import java.awt.event.*;
 import java.awt.*;
 
-public class TestPanel extends ClassPanel implements ActionListener{
+public class TestPanel extends ClassPanel{
 
     Font font = new Font("SansSerif", Font.BOLD, 15);
     String message =    "A classic way to generate pseudo-random numbers, \n"+
