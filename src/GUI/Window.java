@@ -12,11 +12,11 @@ public class Window implements ActionListener{
     JMenu mHome, mMess, mServer, mPlus, mSettings;
     JMenuItem plusMess, plusTop;
 
-    HomePanel home;
-    MessagePanel messages;
-    ServerPanel server;
-    PlusPanel plus;
-    SettingsPanel settings;
+    static HomePanel home;
+    static MessagePanel messages;
+    static ServerPanel server;
+    static PlusPanel plus;
+    static SettingsPanel settings;
 
     public Window(ClassPanel panel){
         //this.panel = panel;
@@ -29,7 +29,7 @@ public class Window implements ActionListener{
         mb = new JMenuBar();
 
         mHome = new JMenu("Home");
-        mMess = new JMenu("Topic");
+        mMess = new JMenu("Messages");
         mServer = new JMenu("Server");
         mPlus = new JMenu(" + ");
         mSettings = new JMenu("Settings");
