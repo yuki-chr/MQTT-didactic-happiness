@@ -48,6 +48,4 @@ public class Message {
         this.topics = temp.topics;
         this.content = temp.content;
     }
-
-
 }
