@@ -8,6 +8,7 @@ public class Pinger extends Thread{
     DatagramSocket socket;
     InetAddress serverIP;
     int serverPort;
+    private byte[] buf = new byte[1024];
 
     public Pinger(DatagramSocket socket, InetAddress ip, int port){
         this.serverIP = ip;
@@ -30,6 +31,18 @@ public class Pinger extends Thread{
             }catch(Exception e){
                 System.out.println("c'è qualquadra che non cosa");
                 running = false;
+            }
+            DatagramPacket packet = new DatagramPacket(buf, buf.length);
+            try{
+                socket.receive(packet);
+                
+            }catch(Exception e){
+                running = false;
+            }
+            String tomato = packet.toString();
+            Message toma = new Message(tomato);
+            if(toma.type == MessageType.ACK){
+                System.out.println("AAAAAACK");
             }
         }
     }
