@@ -1,5 +1,4 @@
 import java.awt.event.ActionEvent;
-import java.net.UnknownHostException;
 import java.awt.*;
 
 import javax.swing.JButton;
@@ -9,6 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Common.Message.MessageType;
 import Common.Message;
 import Client.ClientRun;
 
@@ -44,22 +44,21 @@ public class SendMessagePanel extends ClassPanel{
         //adding
         p.add(topic);
         p.add(text);
+    }
      
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == sendMsg_btn){
             Message toSend = new Message();         
-            toSend.Type = Message.Type.TEXT;
+            toSend.type = MessageType.TEXT;
             toSend.topics = topic.getText().split(" ");
             toSend.content = text.getText(); 
             try {
                 cr.sendMessage(toSend);
-            } catch (UnknownHostException e1) {
+            } catch (Exception e1) {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         }
     }
-
-
-
+}

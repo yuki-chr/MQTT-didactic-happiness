@@ -62,7 +62,7 @@ public class Window implements ActionListener{
 
         //initialise panels
         //home = new HomePanel(cr);
-        messages = new MessagePanel(cr);
+        
         //TestPanel test = new TestPanel();
         //server = new ServerPanel();
         //plus = new PlusPanel();
@@ -105,9 +105,9 @@ public class Window implements ActionListener{
         }else if(e.getSource() == plusTop){
 
             //some code
-            String getMessage = JOptionPane.showInputDialog(frame, "Enter your message");
-            JOptionPane.showMessageDialog(frame, "Your message: "+getMessage);
-            //plus.editTopics(t);
+            String getMessage = JOptionPane.showInputDialog(frame, "Add a new topic\n(already existing topics will be removed)");
+            JOptionPane.showMessageDialog(frame, "New topic: "+ getMessage);
+            plus.editTopics(getMessage, cr);
 
         }else if(e.getSource() == mSettings){
 
@@ -119,6 +119,8 @@ public class Window implements ActionListener{
 
     public static void main(String[] args) {
         cr = new ClientRun();
+        messages = new MessagePanel(cr);
+        sendmessages = new SendMessagePanel(cr);
         home = new HomePanel(cr);
         new Window(home);
     }

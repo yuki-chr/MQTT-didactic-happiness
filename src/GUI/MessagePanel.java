@@ -28,10 +28,10 @@ public class MessagePanel extends ClassPanel {
         p1.setSize(500, 500);
         
 
-        p1.setLayout(new GridLayout(0,1));
+        //p1.setLayout(new GridLayout());
         //p1.add(new JLabel("Hello World", SwingConstants.CENTER));
 
-        this.add(p1);
+        
 
         JScrollPane scrollPane = new JScrollPane(p1);
         scrollPane.setAlignmentX(JScrollPane.CENTER_ALIGNMENT);
@@ -39,8 +39,9 @@ public class MessagePanel extends ClassPanel {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
         scrollPane.setBounds(50, 30, 600, 400);
+        p1.add(new JTextArea("text"));
 
-        p1.add(scrollPane); 
+        this.add(p1);
 
         
 
@@ -50,7 +51,7 @@ public class MessagePanel extends ClassPanel {
         sendMessage_btn.setAlignmentX(JScrollPane.RIGHT_ALIGNMENT);
         sendMessage_btn.setAlignmentY(JScrollPane.BOTTOM_ALIGNMENT);
         sendP.add(sendMessage_btn);
-        p1.add(sendP);
+        this.add(sendP);
     }
 
 
