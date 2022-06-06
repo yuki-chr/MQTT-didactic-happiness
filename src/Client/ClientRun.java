@@ -1,62 +1,75 @@
 package Client;
+
 import Common.*;
 import Common.Message.MessageType;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 
-public class ClientRun extends Thread{
+public class ClientRun extends Thread {
     InetAddress serverIP;
     int serverPort;
     DatagramSocket socket;
     private boolean running;
     private byte[] buf = new byte[1024];
+    ArrayList<String> readMessage;
 
-    public ClientRun(InetAddress ip, int port){
-        this.serverIP = ip;
-        this.serverPort = port;
-    }
-    
-    public ClientRun(){
-
-    }
-    
-    public void startClient(InetAddress ip, int port){
+    public ClientRun(InetAddress ip, int port) {
         this.serverIP = ip;
         this.serverPort = port;
     }
 
-    public void sendMessage(Message MSG) throws IOException{
+    public ClientRun() {
+
+    }
+
+    public void startClient(InetAddress ip, int port) {
+        this.serverIP = ip;
+        this.serverPort = port;
+    }
+
+    public void sendMessage(Message MSG) throws IOException {
         byte[] msg = MSG.serialize().getBytes();
         DatagramPacket Out = new DatagramPacket(msg, msg.length, serverIP, serverPort);
         socket.send(Out);
     }
 
-    @Override 
-    public void run(){
+    @Override
+    public void run() {
         Pinger ping = new Pinger(socket, serverIP, serverPort);
         ping.start();
-        
+
         running = true;
-        while (running){
+        while (running) {
             DatagramPacket packet = new DatagramPacket(buf, buf.length);
-            try{
+            try {
                 socket.receive(packet);
-                
-            }catch(Exception e){
+
+            } catch (Exception e) {
                 running = false;
             }
             String tomato = packet.toString();
             System.out.println("Server : " + tomato);
+            readMessage(tomato);
         }
     }
 
-    public static void main(String[] args) throws IOException{
+    public void readMessage(String message) {
+        readMessage = new ArrayList<String>();
+        readMessage.add(message);
+    }
+
+    public ArrayList<String> log() {
+        return readMessage;
+    }
+
+    public static void main(String[] args) throws IOException {
         String i = "79.52.133.115";
         InetAddress ia = InetAddress.getByName(i);
-        ClientRun client = new ClientRun(ia,4445);
+        ClientRun client = new ClientRun(ia, 4445);
         client.start();
-        client.sendMessage(new Message(null,MessageType.PING,null,null));
-        
+        client.sendMessage(new Message(null, MessageType.PING, null, null));
+
     }
 }
