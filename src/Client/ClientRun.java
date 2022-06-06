@@ -18,6 +18,12 @@ public class ClientRun extends Thread {
     public ClientRun(InetAddress ip, int port) {
         this.serverIP = ip;
         this.serverPort = port;
+        try {
+			socket = new DatagramSocket();
+		} catch (SocketException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
     }
 
     public ClientRun() {
@@ -27,6 +33,12 @@ public class ClientRun extends Thread {
     public void startClient(InetAddress ip, int port) {
         this.serverIP = ip;
         this.serverPort = port;
+        try {
+			socket = new DatagramSocket();
+		} catch (SocketException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
     }
 
     public void sendMessage(Message MSG) throws IOException {
@@ -37,6 +49,7 @@ public class ClientRun extends Thread {
 
     @Override
     public void run() {
+
         Pinger ping = new Pinger(socket, serverIP, serverPort);
         ping.start();
 
@@ -50,8 +63,13 @@ public class ClientRun extends Thread {
                 running = false;
             }
             String tomato = packet.toString();
-            System.out.println("Server : " + tomato);
-            readMessage(tomato);
+            Message toma = new Message(tomato);
+            if(toma.type == MessageType.ACK){
+                System.out.println("AAAAAACK");
+            }else{
+                System.out.println("Server : " + tomato);
+                readMessage(tomato);
+            }
         }
     }
 

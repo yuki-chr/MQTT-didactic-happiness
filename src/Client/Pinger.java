@@ -20,8 +20,8 @@ public class Pinger extends Thread{
     public void run(){
         boolean running = true;
         while(running){
-            Message PING = new Message();
-            PING.type = MessageType.PING;
+            Message PING = new Message(null,MessageType.PING,null,null);
+            //PING.type = MessageType.PING;
             byte [] ping = PING.serialize().getBytes();
             DatagramPacket pingServer = new DatagramPacket(ping, ping.length, serverIP, serverPort);
             
@@ -31,18 +31,6 @@ public class Pinger extends Thread{
             }catch(Exception e){
                 System.out.println("c'è qualquadra che non cosa");
                 running = false;
-            }
-            DatagramPacket packet = new DatagramPacket(buf, buf.length);
-            try{
-                socket.receive(packet);
-                
-            }catch(Exception e){
-                running = false;
-            }
-            String tomato = packet.toString();
-            Message toma = new Message(tomato);
-            if(toma.type == MessageType.ACK){
-                System.out.println("AAAAAACK");
             }
         }
     }

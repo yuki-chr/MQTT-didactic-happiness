@@ -119,6 +119,7 @@ public class Window implements ActionListener{
 
     public static void main(String[] args) {
         cr = new ClientRun();
+        //cr.start(); //THE PINGEEEEEEERRRRR
         messages = new MessagePanel(cr);
         sendmessages = new SendMessagePanel(cr);
         home = new HomePanel(cr);
