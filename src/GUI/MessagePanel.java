@@ -1,6 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import java.awt.*;
+//import java.awt.*;
 
 import javax.swing.*;
 
@@ -70,20 +70,12 @@ public class MessagePanel extends ClassPanel implements Runnable{
     }
 
 
-
     @Override
     public void run() {
         boolean running = true;
-        ArrayList<String> logMessage;
-        ArrayList<String> logTemp;
+        ArrayList<String> logMessage = new ArrayList<String>();
         while(running){
-            //comparing
-        
-            logTemp = new ArrayList<>(cr.log());
-            if(logMessage == logTemp){
-                //passa
-            }else{//aggiungi
-            }
+            logMessage.addAll(cr.log(logMessage.size()));
         }
 
     }

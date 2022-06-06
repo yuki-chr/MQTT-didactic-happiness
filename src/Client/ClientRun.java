@@ -13,7 +13,7 @@ public class ClientRun extends Thread {
     DatagramSocket socket;
     private boolean running;
     private byte[] buf = new byte[1024];
-    ArrayList<String> readMessage;
+    ArrayList<String> totMessages = new ArrayList<>();
 
     public ClientRun(InetAddress ip, int port) {
         this.serverIP = ip;
@@ -68,20 +68,19 @@ public class ClientRun extends Thread {
                 System.out.println("AAAAAACK");
             }else{
                 System.out.println("Server : " + tomato);
-                readMessage(tomato);
+                updateLog(tomato);
             }
         }
     }
 
-    public void readMessage(String message) {
-        readMessage = new ArrayList<String>();
-        readMessage.add(message);
+    public void updateLog(String message) {
+        totMessages.add(message);
     }
 
-    public ArrayList<String> log() {
-        ArrayList<String> temp = new ArrayList<String>();
-        
-        return readMessage;
+    public ArrayList<String> log(int i) {
+        ArrayList<String> newMessages = new ArrayList<String>(totMessages);
+        newMessages.subList(0, i).clear();
+        return newMessages;
     }
 
     public static void main(String[] args) throws IOException {
