@@ -1,4 +1,5 @@
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.awt.*;
 
 import javax.swing.*;
@@ -14,11 +15,10 @@ import Common.Message;
  * 
  * 
  */
-public class MessagePanel extends ClassPanel {
+public class MessagePanel extends ClassPanel implements Runnable{
 
     JPanel p1;
     JButton sendMessage_btn;
-    
 
     public MessagePanel(ClientRun cr){
         super(cr);
@@ -42,9 +42,7 @@ public class MessagePanel extends ClassPanel {
         p1.add(new JTextArea("text"));
 
         this.add(p1);
-
         
-
         JPanel sendP = new JPanel();
         sendMessage_btn = new JButton("Scrivi Messaggio");
         sendMessage_btn.addActionListener(this);
@@ -69,6 +67,25 @@ public class MessagePanel extends ClassPanel {
         //some code to display message data here
         
         p1.add(panel);
+    }
+
+
+
+    @Override
+    public void run() {
+        boolean running = true;
+        ArrayList<String> logMessage;
+        ArrayList<String> logTemp;
+        while(running){
+            //comparing
+        
+            logTemp = new ArrayList<>(cr.log());
+            if(logMessage = logTemp){
+                //passa
+            }else{//aggiungi
+            }
+        }
+
     }
     
     
