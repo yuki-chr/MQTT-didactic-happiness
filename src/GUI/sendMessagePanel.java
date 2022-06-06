@@ -12,6 +12,7 @@ import Common.Message.MessageType;
 import Common.Message;
 import Client.ClientRun;
 
+//Maria è stata qui
 public class SendMessagePanel extends ClassPanel{
 
     JButton sendMsg_btn;
