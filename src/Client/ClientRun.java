@@ -79,6 +79,8 @@ public class ClientRun extends Thread {
     }
 
     public ArrayList<String> log() {
+        ArrayList<String> temp = new ArrayList<String>();
+        
         return readMessage;
     }
 
