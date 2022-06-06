@@ -78,7 +78,7 @@ public class ClientRun extends Thread {
     }
 
     public ArrayList<String> log(int i) {
-        ArrayList<String> newMessages = new ArrayList<String>(totMessages);
+        ArrayList<String> newMessages = new ArrayList<>(totMessages);
         newMessages.subList(0, i).clear();
         return newMessages;
     }
