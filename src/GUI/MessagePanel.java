@@ -80,7 +80,7 @@ public class MessagePanel extends ClassPanel implements Runnable{
             //comparing
         
             logTemp = new ArrayList<>(cr.log());
-            if(logMessage = logTemp){
+            if(logMessage == logTemp){
                 //passa
             }else{//aggiungi
             }

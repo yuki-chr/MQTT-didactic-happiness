@@ -118,5 +118,12 @@ public class Message {
         }else if(s[1].equals("TEXT")){
             this.type = MessageType.TEXT;
         }
+
+        //topics
+        String[] topix = s[2].split(",");
+        this.topics = topix;
+
+        //content
+        this.content = s[3];
     }
 }
