@@ -94,6 +94,7 @@ public class ServerRun extends Thread {
                     catch (IOException ex) {
                         System.out.print("Invalid Path");
                     }
+                    System.out.println("username: "+yorname+", password: "+psw);
                     break;
 
                 case LOGIN:
@@ -107,6 +108,7 @@ public class ServerRun extends Thread {
                             reply = new Message(null,MessageType.ERROR,null,"Wrong Password!");
                         }
                     }
+                    System.out.println(topix);
                     break;
 
                 case UPDATE:
@@ -119,6 +121,7 @@ public class ServerRun extends Thread {
                         }
                     }
                     reply = new Message(null,MessageType.SUCCESS,null,null);
+                    System.out.println(topix);
                     break;
 
                 case TEXT:
