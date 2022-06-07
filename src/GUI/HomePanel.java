@@ -21,7 +21,7 @@ public class HomePanel extends ClassPanel{
     JButton startServer_btn, connectServer_btn;
     JTextField ip_input, port_input;
     String text = "Hello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\n";
-    final static String newline = "\n";
+    //final static String newline = "\n";
     ServerRun serverRun;
 
     public HomePanel(ClientRun cr){

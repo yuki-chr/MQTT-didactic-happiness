@@ -15,8 +15,8 @@ public class Window implements ActionListener{
 
     static JFrame frame;
     JMenuBar mb;
-    JMenu mHome, mMess, mServer, mPlus, mSettings;
-    JMenuItem plusMess, plusTop, mLogin, mRegister;
+    JMenuItem mHome, mMess, mServer, mPlus, mSettings, mLogin, mRegister;
+    JMenuItem plusMess, plusTop;
 
     static HomePanel home;
     static MessagePanel messages;
@@ -36,14 +36,13 @@ public class Window implements ActionListener{
         //menu
         mb = new JMenuBar();
 
-        mHome = new JMenu("Home");
-        mMess = new JMenu("Messages");
-        mServer = new JMenu("Server");
+        mHome = new JMenuItem("Home");
+        mMess = new JMenuItem("Messages");
+        mServer = new JMenuItem("Server");
         mPlus = new JMenu(" + ");
-        mSettings = new JMenu("Settings");
-
-        plusMess = new JMenuItem("New Message");
-        plusTop = new JMenuItem("New Topic");
+            plusMess = new JMenuItem("New Message");
+            plusTop = new JMenuItem("New Topic");
+        mSettings = new JMenuItem("Settings");
         mLogin = new JMenuItem("Login");
         mRegister = new JMenuItem("Register");
 
@@ -69,14 +68,6 @@ public class Window implements ActionListener{
 
         frame.setJMenuBar(mb);
 
-        //initialise panels
-        //home = new HomePanel(cr);
-        
-        //TestPanel test = new TestPanel();
-        //server = new ServerPanel();
-        //plus = new PlusPanel();
-        //settings = new SettingsPanel();
-
         //set the start panel as content pane
         frame.setContentPane(panel);
         //frame.pack();
@@ -95,16 +86,19 @@ public class Window implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == mHome){
-
+            System.out.println("home");
             replaceContent(home);
+            
 
         }else if(e.getSource() == mMess){
-
+            System.out.println("messages");
             replaceContent(messages);
+            
 
         }else if(e.getSource() == mServer){
-
+            System.out.println("server");
            replaceContent(server);
+           
 
         }else if(e.getSource() == plusMess){
 
@@ -118,25 +112,26 @@ public class Window implements ActionListener{
             plus.editTopics(getMessage, cr);
 
         }else if(e.getSource() == mLogin){
+            System.out.println("login");  
             String getUsername = JOptionPane.showInputDialog(frame, "Username:");
             String getPassword = JOptionPane.showInputDialog(frame, "Password:");
             Message login = Accounts.login(getUsername, getPassword);
             try {
                 cr.sendMessage(login);
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         }else if(e.getSource() == mRegister){
+            System.out.println("register");  
             String getUsername = JOptionPane.showInputDialog(frame, "Username:");
             String getPassword = JOptionPane.showInputDialog(frame, "Password:");
             Message register = Accounts.register(getUsername, getPassword);
             try {
                 cr.sendMessage(register);
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
-            }  
+            }
+            
         }else if(e.getSource() == mSettings){
 
             //replaceContent(settings);

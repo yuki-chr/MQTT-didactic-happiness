@@ -25,6 +25,7 @@ public class MessagePanel extends ClassPanel implements Runnable{
     public MessagePanel(ClientRun cr){
         super(cr);
         this.title = "Messages";
+        this.setLayout(new BorderLayout());
 
         messPanel = new JPanel();
         messPanel.setSize(500, 500);
@@ -38,7 +39,7 @@ public class MessagePanel extends ClassPanel implements Runnable{
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
         scrollPane.setBounds(50, 30, 600, 400);
 
-        this.add(messPanel);
+        
         
         JPanel sendP = new JPanel();
         sendMessage_btn = new JButton("Scrivi Messaggio");
@@ -46,7 +47,10 @@ public class MessagePanel extends ClassPanel implements Runnable{
         sendMessage_btn.setAlignmentX(JScrollPane.RIGHT_ALIGNMENT);
         sendMessage_btn.setAlignmentY(JScrollPane.BOTTOM_ALIGNMENT);
         sendP.add(sendMessage_btn);
-        this.add(sendP);
+        
+        this.add(new JLabel("Hi", SwingConstants.CENTER), BorderLayout.NORTH);
+        this.add(messPanel, BorderLayout.CENTER);
+        this.add(sendP, BorderLayout.SOUTH);
     }
 
 
