@@ -24,12 +24,12 @@ public class ServerRun extends Thread {
     String file;
 
     public ServerRun() {
-        System.out.println("Server Started!");
         try{
             socket = new DatagramSocket(4445);
         }catch(Exception err) {
             System.out.println(err);
         }
+        System.out.println("Server Started!");
 
         file = "src/Server/users_list.txt";
         String json;
