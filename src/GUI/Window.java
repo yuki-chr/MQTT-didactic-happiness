@@ -5,14 +5,17 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import Client.ClientRun;
+import Common.Accounts;
+import Common.Message;
 
 import java.awt.event.*;
+import java.io.IOException;
 
 public class Window implements ActionListener{
 
     static JFrame frame;
     JMenuBar mb;
-    JMenu mHome, mMess, mServer, mPlus, mSettings;
+    JMenu mHome, mMess, mServer, mPlus, mSettings, mLogin, mRegister;
     JMenuItem plusMess, plusTop;
 
     static HomePanel home;
@@ -37,6 +40,8 @@ public class Window implements ActionListener{
         mMess = new JMenu("Messages");
         mServer = new JMenu("Server");
         mPlus = new JMenu(" + ");
+        mLogin = new JMenu("Login");
+        mRegister = new JMenu("Register");
         mSettings = new JMenu("Settings");
 
         plusMess = new JMenuItem("New Message");
@@ -47,6 +52,8 @@ public class Window implements ActionListener{
         mServer.addActionListener(this);
             plusMess.addActionListener(this);
             plusTop.addActionListener(this);
+        mLogin.addActionListener(this);
+        mRegister.addActionListener(this);
         mSettings.addActionListener(this);
 
         mPlus.add(plusMess);
@@ -56,6 +63,8 @@ public class Window implements ActionListener{
         mb.add(mMess);
         mb.add(mServer);
         mb.add(mPlus);
+        mb.add(mLogin);
+        mb.add(mRegister);
         mb.add(mSettings);
 
         frame.setJMenuBar(mb);
@@ -108,6 +117,26 @@ public class Window implements ActionListener{
             JOptionPane.showMessageDialog(frame, "New topic: "+ getMessage);
             plus.editTopics(getMessage, cr);
 
+        }else if(e.getSource() == mLogin){
+            String getUsername = JOptionPane.showInputDialog(frame, "Username:");
+            String getPassword = JOptionPane.showInputDialog(frame, "Password:");
+            Message login = Accounts.login(getUsername, getPassword);
+            try {
+                cr.sendMessage(login);
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }else if(e.getSource() == mRegister){
+            String getUsername = JOptionPane.showInputDialog(frame, "Username:");
+            String getPassword = JOptionPane.showInputDialog(frame, "Password:");
+            Message register = Accounts.register(getUsername, getPassword);
+            try {
+                cr.sendMessage(register);
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }  
         }else if(e.getSource() == mSettings){
 
             //replaceContent(settings);
