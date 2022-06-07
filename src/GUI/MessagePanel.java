@@ -39,8 +39,6 @@ public class MessagePanel extends ClassPanel implements Runnable{
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
         scrollPane.setBounds(50, 30, 600, 400);
 
-        
-        
         JPanel sendP = new JPanel();
         sendMessage_btn = new JButton("Scrivi Messaggio");
         sendMessage_btn.addActionListener(this);
@@ -48,7 +46,7 @@ public class MessagePanel extends ClassPanel implements Runnable{
         sendMessage_btn.setAlignmentY(JScrollPane.BOTTOM_ALIGNMENT);
         sendP.add(sendMessage_btn);
         
-        this.add(new JLabel("Hi", SwingConstants.CENTER), BorderLayout.NORTH);
+        this.add(new JLabel("RECEIVED MESSAGES ", SwingConstants.CENTER), BorderLayout.NORTH);
         this.add(messPanel, BorderLayout.CENTER);
         this.add(sendP, BorderLayout.SOUTH);
     }
@@ -100,6 +98,7 @@ public class MessagePanel extends ClassPanel implements Runnable{
     public void run() {
         boolean running = true;
         ArrayList<String> logMessage = new ArrayList<String>();
+        
         while(running){
             ArrayList<String> tempMessage = new ArrayList<String>(cr.log(logMessage.size()));
             if(!(tempMessage.isEmpty())){
