@@ -63,7 +63,7 @@ public class ServerRun extends Thread {
             System.out.println("address: "+address+" port: "+port);
             
             String received 
-              = new String(packet.getData(), 0, packet.getLength()); 
+              = new String(packet.getData()); 
             
             Message recMsg = new Message(received);
             recMsg.ip = address;
