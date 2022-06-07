@@ -24,6 +24,7 @@ public class ServerRun extends Thread {
     String file;
 
     public ServerRun() {
+        System.out.println("Server Started!");
         try{
             socket = new DatagramSocket(4445);
         }catch(Exception err) {
@@ -35,7 +36,7 @@ public class ServerRun extends Thread {
 
         try {
             json = Files.readString(Paths.get(file));
-            System.out.println("read: "+json);
+            //System.out.println("read: "+json);
             users = new Users(json);
         } catch (IOException e) {
             // TODO Auto-generated catch block

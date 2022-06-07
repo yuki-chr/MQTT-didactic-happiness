@@ -149,9 +149,8 @@ public class HomePanel extends ClassPanel{
             }
 
         }else if(e.getSource() == startServer_btn){
-
-            new ServerRun();
-
+            ServerRun server = new ServerRun();
+            server.start();
         }
         
     }
