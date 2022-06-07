@@ -9,9 +9,12 @@ import javax.swing.JToggleButton;
 import Client.ClientRun;
 import Common.Accounts;
 import Common.Message;
+import Server.ServerRun;
 
 import java.awt.event.*;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class Window implements ActionListener{
 
@@ -27,7 +30,9 @@ public class Window implements ActionListener{
     static ServerPanel server;
     static PlusPanel plus;
     static SettingsPanel settings;
+
     static ClientRun cr;
+    static ServerRun sr;
 
     public Window(ClassPanel panel){
         //this.panel = panel;
@@ -113,7 +118,43 @@ public class Window implements ActionListener{
 
         }else if(e.getSource() == mServer){
             System.out.println("server");
-           replaceContent(server);
+            a:{
+                String[] options = {"Create", "Connect"};
+                String[] title ={"New Server", "Connect to Server"};
+                int x = JOptionPane.showOptionDialog(frame, "Do you want to create\n a new server or connect\n to an existing one?",
+                    "Server options",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
+
+                if (x != -1) {
+                    System.out.println("Your choice was " + options[x]);
+                } else {
+                    System.out.println(":( no choice");
+                    break a;    //exit the block
+                }
+
+                String getIP = JOptionPane.showInputDialog(frame, "IP: ");
+                String getPort = JOptionPane.showInputDialog(frame, "Port: ");
+                JOptionPane.showMessageDialog(frame, ("IP: "+getIP +"\nPort: "+getPort), title[x], JOptionPane.INFORMATION_MESSAGE);
+                
+                if(x == 0){
+                    sr = new ServerRun();
+                    sr.start();
+                    
+                }else if(x == 1){
+                    try {
+                        InetAddress ip = InetAddress.getByName(getIP);
+                        int port = Integer.parseInt(getPort);
+                        cr.startClient(ip, port);
+                        cr.start(); //the pingerrrrr
+                        replaceContent(messages);
+        
+                    } catch (UnknownHostException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+            }
+            
+            
            
 
         }else if(e.getSource() == plusMess){
@@ -122,7 +163,6 @@ public class Window implements ActionListener{
 
         }else if(e.getSource() == plusTop){
 
-            //some code
             String getMessage = JOptionPane.showInputDialog(frame, "Add a new topic\n(already existing topics will be removed)");
             JOptionPane.showMessageDialog(frame, "New topic: "+ getMessage);
             plus.editTopics(getMessage, cr);
