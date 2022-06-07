@@ -5,6 +5,7 @@ import Common.Message.MessageType;
 public class Accounts {
     public static Message register(String name, String password){
         Message m = new Message();
+        m.topics = new String[1];
 
         m.type = MessageType.REGISTER;
         m.topics[0] = "u/" + name;
@@ -14,6 +15,7 @@ public class Accounts {
     }
     public static Message login(String name, String password){
         Message m = new Message();
+        m.topics = new String[1];
 
         m.type = MessageType.LOGIN;
         m.topics[0] = "u/" + name;
