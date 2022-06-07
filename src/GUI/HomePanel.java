@@ -20,7 +20,7 @@ public class HomePanel extends ClassPanel{
     JPanel description, servSpace;
     JButton startServer_btn, connectServer_btn;
     JTextField ip_input, port_input;
-    String text = "Hello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\n";
+    String text = "Hello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!\nHello World!";
     //final static String newline = "\n";
     ServerRun serverRun;
 
@@ -40,11 +40,10 @@ public class HomePanel extends ClassPanel{
             welcome.setFont(new Font("SansSerif", Font.BOLD, 24));
             welcome.setBackground(Util.bg);
 
-            JTextArea textArea = new JTextArea(5, 20);
+            JTextArea textArea = new JTextArea(text, 1, 15);
             textArea.setFont(new Font("SansSerif", Font.BOLD, 18));
             textArea.setBorder(BorderFactory.createLineBorder(Color.black));
             textArea.setEditable(false);
-            textArea.append(text);
 
             description.setLayout(new BorderLayout());
             description.add(welcome, BorderLayout.NORTH);

@@ -1,8 +1,10 @@
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JToggleButton;
 
 import Client.ClientRun;
 import Common.Accounts;
@@ -15,7 +17,8 @@ public class Window implements ActionListener{
 
     static JFrame frame;
     JMenuBar mb;
-    JMenuItem mHome, mMess, mServer, mPlus, mSettings, mLogin, mRegister;
+    JToggleButton mHome, mMess, mServer, mSettings, mLogin, mRegister;
+    JMenu mPlus;
     JMenuItem plusMess, plusTop;
 
     static HomePanel home;
@@ -36,16 +39,28 @@ public class Window implements ActionListener{
         //menu
         mb = new JMenuBar();
 
-        mHome = new JMenuItem("Home");
-        mMess = new JMenuItem("Messages");
-        mServer = new JMenuItem("Server");
+        //toggle buttons
+        mHome = new JToggleButton("Home");
+        mMess = new JToggleButton("Messages");
+        mServer = new JToggleButton("Server");
         mPlus = new JMenu(" + ");
             plusMess = new JMenuItem("New Message");
             plusTop = new JMenuItem("New Topic");
-        mSettings = new JMenuItem("Settings");
-        mLogin = new JMenuItem("Login");
-        mRegister = new JMenuItem("Register");
+        mSettings = new JToggleButton("Settings");
+        mLogin = new JToggleButton("Login");
+        mRegister = new JToggleButton("Register");
 
+        //button group
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(mHome);
+        bg.add(mMess);
+        bg.add(mServer);
+        bg.add(mLogin);
+        bg.add(mRegister);
+        bg.add(mSettings);
+        bg.add(mPlus);
+
+        //actionlisteners
         mHome.addActionListener(this);
         mMess.addActionListener(this);
         mServer.addActionListener(this);
@@ -55,16 +70,17 @@ public class Window implements ActionListener{
         mRegister.addActionListener(this);
         mSettings.addActionListener(this);
 
+        //adding
         mPlus.add(plusMess);
         mPlus.add(plusTop);
 
         mb.add(mHome);
         mb.add(mMess);
         mb.add(mServer);
-        mb.add(mPlus);
         mb.add(mLogin);
         mb.add(mRegister);
         mb.add(mSettings);
+        mb.add(mPlus);
 
         frame.setJMenuBar(mb);
 
@@ -77,7 +93,7 @@ public class Window implements ActionListener{
 
     //method to refresh window: it replaces old panel with a new one
     public static void replaceContent(ClassPanel newPanel){
-        frame.getContentPane().removeAll();
+        //frame.getContentPane().removeAll();   //so it can back to others panels
         frame.setContentPane(newPanel);
         frame.revalidate();
         frame.repaint();
