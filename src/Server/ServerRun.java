@@ -111,9 +111,9 @@ public class ServerRun extends Thread {
 
                 case UPDATE:
                     for(String t : recMsg.topics){
-                        if(topix!=null){
+                        if(topix.get(address)!=null){
                             if(topix.get(address).removeIf(topic -> topic.equals(t))){/*SUS*/}else{topix.get(address).add(t);}
-                        }
+                        }else{topix.put(address, new ArrayList<String>());}
                     }
                     reply = new Message(null,MessageType.SUCCESS,null,null);
                     break;
