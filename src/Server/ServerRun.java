@@ -38,7 +38,6 @@ public class ServerRun extends Thread {
             System.out.println("read: "+json);
             users = new Users(json);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

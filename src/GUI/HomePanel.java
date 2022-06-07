@@ -133,7 +133,6 @@ public class HomePanel extends ClassPanel{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
         if(e.getSource() == connectServer_btn){
 
             try {
@@ -144,7 +143,6 @@ public class HomePanel extends ClassPanel{
                 Window.replaceContent(Window.messages);
 
             } catch (UnknownHostException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
 

@@ -56,7 +56,6 @@ public class SendMessagePanel extends ClassPanel {
             try {
                 cr.sendMessage(toSend);
             } catch (Exception e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         }
