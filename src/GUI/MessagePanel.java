@@ -77,8 +77,5 @@ public class MessagePanel extends ClassPanel implements Runnable{
         while(running){
             logMessage.addAll(cr.log(logMessage.size()));
         }
-
     }
-    
-    
 }
