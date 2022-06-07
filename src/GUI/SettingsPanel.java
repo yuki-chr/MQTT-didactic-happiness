@@ -11,7 +11,6 @@ public class SettingsPanel extends ClassPanel {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
         
     }
     

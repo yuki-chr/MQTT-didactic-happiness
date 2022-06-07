@@ -21,7 +21,6 @@ public class ClientRun extends Thread {
         try {
 			socket = new DatagramSocket();
 		} catch (SocketException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
     }
@@ -36,7 +35,6 @@ public class ClientRun extends Thread {
         try {
 			socket = new DatagramSocket();
 		} catch (SocketException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
     }

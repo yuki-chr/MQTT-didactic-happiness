@@ -9,7 +9,6 @@ import Client.ClientRun;
 public class PlusPanel extends ClassPanel {
     public PlusPanel(ClientRun cr) {
         super(cr);
-        //TODO Auto-generated constructor stub
     }
 
     static void editTopics(String t, ClientRun cr){
@@ -21,7 +20,6 @@ public class PlusPanel extends ClassPanel {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
         
     }
 }
