@@ -23,7 +23,7 @@ public class Window implements ActionListener{
 
     static HomePanel home;
     static MessagePanel messages;
-    static SendMessagePanel sendmessages;
+    static SendMessagesPanel sendmessages;
     static ServerPanel server;
     static PlusPanel plus;
     static SettingsPanel settings;
@@ -160,7 +160,7 @@ public class Window implements ActionListener{
         cr = new ClientRun();
         //cr.start(); //THE PINGEEEEEEERRRRR
         messages = new MessagePanel(cr);
-        sendmessages = new SendMessagePanel(cr);
+        sendmessages = new SendMessagesPanel(cr);
         home = new HomePanel(cr);
         new Window(home);
     }
