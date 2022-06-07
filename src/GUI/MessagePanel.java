@@ -1,11 +1,13 @@
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-//import java.awt.*;
+import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.border.MatteBorder;
 
 import Client.ClientRun;
 import Common.Message;
+import Common.Message.MessageType;
 /*
  * qui vengono visualizzati i messaggi grazie a un panel con un jScrollPane.
  * i messaggi ricevuti devono essere presentati in ordine, e devono indicare:
@@ -17,31 +19,26 @@ import Common.Message;
  */
 public class MessagePanel extends ClassPanel implements Runnable{
 
-    JPanel p1;
+    JPanel messPanel;
     JButton sendMessage_btn;
 
     public MessagePanel(ClientRun cr){
         super(cr);
         this.title = "Messages";
 
-        p1 = new JPanel();
-        p1.setSize(500, 500);
-        
+        messPanel = new JPanel();
+        messPanel.setSize(500, 500);
+        messPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        messPanel.setLayout(new GridLayout(0,1));
 
-        //p1.setLayout(new GridLayout());
-        //p1.add(new JLabel("Hello World", SwingConstants.CENTER));
-
-        
-
-        JScrollPane scrollPane = new JScrollPane(p1);
+        JScrollPane scrollPane = new JScrollPane(messPanel);
         scrollPane.setAlignmentX(JScrollPane.CENTER_ALIGNMENT);
         scrollPane.setAlignmentY(JScrollPane.CENTER_ALIGNMENT);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED); 
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED); 
         scrollPane.setBounds(50, 30, 600, 400);
-        p1.add(new JTextArea("text"));
 
-        this.add(p1);
+        this.add(messPanel);
         
         JPanel sendP = new JPanel();
         sendMessage_btn = new JButton("Scrivi Messaggio");
@@ -62,11 +59,36 @@ public class MessagePanel extends ClassPanel implements Runnable{
         
     }
 
-    public void displayMessage(Message mess){
-        JPanel panel = new JPanel();
-        //some code to display message data here
+    public void displayMessage(String s){
         
-        p1.add(panel);
+        Message m = new Message(s);
+        //some code to display message data here
+        if(m.type == MessageType.TEXT){
+            JPanel newMess = new JPanel();
+            newMess.setLayout(new BorderLayout());
+            JPanel top = new JPanel();
+            top.setLayout(new BorderLayout());
+            JLabel ipL = new JLabel("IP: " + m.ip.getHostAddress());
+            JLabel topicL = new JLabel();
+            String topicS = "Topics: ";
+            for(int i = 0; i < m.topics.length; i++){
+                topicS += m.topics[i];
+                if(i < m.topics.length - 1) 
+                topicS += (", ");     
+                else
+                topicS += ("."); 
+            }
+            topicL.setText(topicS);
+            top.add(ipL, BorderLayout.NORTH);
+            top.add(topicL, BorderLayout.CENTER);
+            JTextArea text = new JTextArea(m.content);
+            top.setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+            newMess.add(top, BorderLayout.NORTH);
+            newMess.add(text, BorderLayout.CENTER);
+            messPanel.add(newMess);
+            messPanel.revalidate();
+            messPanel.repaint();
+        }
     }
 
 
@@ -75,7 +97,14 @@ public class MessagePanel extends ClassPanel implements Runnable{
         boolean running = true;
         ArrayList<String> logMessage = new ArrayList<String>();
         while(running){
-            logMessage.addAll(cr.log(logMessage.size()));
+            ArrayList<String> tempMessage = new ArrayList<String>(cr.log(logMessage.size()));
+            if(!(tempMessage.isEmpty())){
+                logMessage.addAll(tempMessage);
+                for(String s: tempMessage){
+                    displayMessage(s);
+                }
+            }
+            
         }
     }
 }
