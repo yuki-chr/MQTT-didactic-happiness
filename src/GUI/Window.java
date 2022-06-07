@@ -15,8 +15,8 @@ public class Window implements ActionListener{
 
     static JFrame frame;
     JMenuBar mb;
-    JMenu mHome, mMess, mServer, mPlus, mSettings, mLogin, mRegister;
-    JMenuItem plusMess, plusTop;
+    JMenu mHome, mMess, mServer, mPlus, mSettings;
+    JMenuItem plusMess, plusTop, mLogin, mRegister;
 
     static HomePanel home;
     static MessagePanel messages;
@@ -40,12 +40,12 @@ public class Window implements ActionListener{
         mMess = new JMenu("Messages");
         mServer = new JMenu("Server");
         mPlus = new JMenu(" + ");
-        mLogin = new JMenu("Login");
-        mRegister = new JMenu("Register");
         mSettings = new JMenu("Settings");
 
         plusMess = new JMenuItem("New Message");
         plusTop = new JMenuItem("New Topic");
+        mLogin = new JMenuItem("Login");
+        mRegister = new JMenuItem("Register");
 
         mHome.addActionListener(this);
         mMess.addActionListener(this);
