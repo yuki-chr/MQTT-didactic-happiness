@@ -92,6 +92,8 @@ public class MessagePanel extends ClassPanel implements Runnable{
             messPanel.add(newMess);
             messPanel.revalidate();
             messPanel.repaint();
+        }else if(m.type == MessageType.ERROR){
+            System.out.println(m.content);
         }
     }
 

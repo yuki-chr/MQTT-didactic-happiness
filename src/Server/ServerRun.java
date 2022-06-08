@@ -103,7 +103,8 @@ public class ServerRun extends Thread {
                         reply = new Message(null,MessageType.ERROR,null,"Account does not exist!");
                     }else{
                         if(recMsg.content.equals(users.getHashPw(recMsg.topics[0]))){
-                            if(topix.get(address).removeIf(topic -> topic.equals(recMsg.topics[0]))){/*SUS*/}else{topix.get(address).add(recMsg.topics[0]);}
+                            //if(topix.get(address).removeIf(topic -> topic.equals(recMsg.topics[0]))){/*SUS*/}else{topix.get(address).add(recMsg.topics[0]);}
+                            topix.get(address).add(recMsg.topics[0]);
                             reply = new Message(null,MessageType.SUCCESS,null,null);
                         }else{
                             reply = new Message(null,MessageType.ERROR,null,"Wrong Password!");
