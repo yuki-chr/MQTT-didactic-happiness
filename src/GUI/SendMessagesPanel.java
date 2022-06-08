@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.CompoundBorder;
 
 import Common.Message.MessageType;
 import Common.Message;
@@ -29,31 +30,38 @@ public class SendMessagesPanel extends ClassPanel {
         p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
 
         // topic input
-        
+        JPanel t = new JPanel(new GridLayout(1,2));
+        t.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
         JLabel topicL = new JLabel("Topic: ");
-        p.add(topicL);
+        t.add(topicL);
         topic = new JTextField(10);
-        p.add(topic);
+        t.add(topic);
+        p.add(t);
 
         // content input
         text = new JTextArea(5, 20);
+        text.setBorder((BorderFactory.createLineBorder(Color.black)));
         text.setEditable(true);
+        text.setLineWrap(true);
         JScrollPane scrollPane = new JScrollPane(text);
-        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setBounds(50, 30, 600, 400);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         text.setAlignmentX(Component.CENTER_ALIGNMENT);
-        p.add(text);
+        p.add(scrollPane);
         
 
         // btn
         sendMsg_btn = new JButton("send");
         sendMsg_btn.setAlignmentX(Component.CENTER_ALIGNMENT);
+<<<<<<< Updated upstream
         sendMsg_btn.addActionListener(this);
+=======
+        sendMsg_btn.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+>>>>>>> Stashed changes
         p.add(sendMsg_btn);
 
         // adding
-        p.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        p.setBorder(new CompoundBorder((BorderFactory.createLineBorder(Color.black)), BorderFactory.createEmptyBorder(10, 20, 10, 20)));
         this.add(p);
     }
 
