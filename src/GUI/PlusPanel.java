@@ -11,7 +11,7 @@ public class PlusPanel extends ClassPanel {
         super(cr);
     }
 
-    static void editTopics(String t, ClientRun cr){
+    void editTopics(String t, ClientRun cr){
         if(t!=null){
             String[] ts = t.split(" ");
             Message m = new Message(null,MessageType.UPDATE,ts,"");

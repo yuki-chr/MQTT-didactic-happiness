@@ -132,10 +132,6 @@ public class Window implements ActionListener{
                     System.out.println(":( no choice");
                     break a;    //exit the block
                 }
-
-                String getIP = JOptionPane.showInputDialog(frame, "IP: ");
-                String getPort = JOptionPane.showInputDialog(frame, "Port: ");
-                JOptionPane.showMessageDialog(frame, ("IP: "+getIP +"\nPort: "+getPort), title[x], JOptionPane.INFORMATION_MESSAGE);
                 
                 if(x == 0){
                     sr = new ServerRun();
@@ -143,6 +139,9 @@ public class Window implements ActionListener{
                     
                 }else if(x == 1){
                     try {
+                        String getIP = JOptionPane.showInputDialog(frame, "IP: ");
+                        String getPort = JOptionPane.showInputDialog(frame, "Port: ");
+                        JOptionPane.showMessageDialog(frame, ("IP: "+getIP +"\nPort: "+getPort), title[x], JOptionPane.INFORMATION_MESSAGE);
                         InetAddress ip = InetAddress.getByName(getIP);
                         int port = Integer.parseInt(getPort);
                         cr.startClient(ip, port);
