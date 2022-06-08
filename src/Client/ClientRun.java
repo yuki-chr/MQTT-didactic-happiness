@@ -19,7 +19,7 @@ public class ClientRun extends Thread {
         this.serverIP = ip;
         this.serverPort = port;
         try {
-			socket = new DatagramSocket();
+			socket = new DatagramSocket(4445);
 		} catch (SocketException e1) {
 			e1.printStackTrace();
 		}
