@@ -1,5 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import Client.ClientRun;
 import Server.ServerRun;
@@ -86,6 +88,7 @@ public class HomePanel extends ClassPanel{
                 connectServer_btn.addActionListener(this);
                 submitPane.add(connectServer_btn);
                 connectP.add(submitPane, BorderLayout.SOUTH);
+                enableBtn(ip_input, port_input, connectServer_btn);
             
                 // Add Output fields
                 /*
@@ -152,5 +155,28 @@ public class HomePanel extends ClassPanel{
         
     }
 
-
+    public void enableBtn(JTextField text1, JTextField text2, JButton btn) {
+        DocumentListener dl = new DocumentListener() {
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                checkBtn(text1, text2, btn);
+            }
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                checkBtn(text1, text2, btn);
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                checkBtn(text1, text2, btn);
+            }
+        };
+        text1.getDocument().addDocumentListener(dl);
+        text2.getDocument().addDocumentListener(dl);
+        btn.setEnabled(false);
+    }
+    private void checkBtn(JTextField text1, JTextField text2, JButton btn) {
+        boolean value1 = !text1.getText().trim().isEmpty();
+        boolean value2 = !text2.getText().trim().isEmpty();
+        btn.setEnabled(value1 && value2);
+    }
 }
