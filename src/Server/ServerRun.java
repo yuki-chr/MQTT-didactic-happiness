@@ -144,6 +144,7 @@ public class ServerRun extends Thread {
                     }
                     System.out.println(recMsg.content);
                     for ( InetAddress i : sent){
+                        System.out.println("SENDING address: "+ i +" port: 4445");
                         DatagramPacket bigPacket 
                         = new DatagramPacket(bigByte, bigByte.length, i, 4445);
                     try{
