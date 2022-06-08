@@ -52,6 +52,7 @@ public class Window implements ActionListener{
             plusMess = new JMenuItem("New Message");
             plusTop = new JMenuItem("New Topic");
         mSettings = new JToggleButton("Settings");
+            mSettings.setEnabled(false);    //not done yet
         mLogin = new JToggleButton("Login");
         mRegister = new JToggleButton("Register");
 
@@ -158,7 +159,7 @@ public class Window implements ActionListener{
            
 
         }else if(e.getSource() == plusMess){
-
+            
             //plus.editMessage(t);
 
         }else if(e.getSource() == plusTop){

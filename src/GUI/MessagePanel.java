@@ -56,6 +56,8 @@ public class MessagePanel extends ClassPanel implements Runnable{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == sendMessage_btn){
+            
+            System.out.println("send message panel");
             Window.replaceContent(Window.sendmessages);
         }
         
