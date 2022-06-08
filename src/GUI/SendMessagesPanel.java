@@ -53,11 +53,7 @@ public class SendMessagesPanel extends ClassPanel {
         // btn
         sendMsg_btn = new JButton("send");
         sendMsg_btn.setAlignmentX(Component.CENTER_ALIGNMENT);
-<<<<<<< Updated upstream
         sendMsg_btn.addActionListener(this);
-=======
-        sendMsg_btn.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
->>>>>>> Stashed changes
         p.add(sendMsg_btn);
 
         // adding
