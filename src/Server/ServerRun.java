@@ -109,6 +109,7 @@ public class ServerRun extends Thread {
                             System.out.println(topix.get(address)); //CHECK
                             reply = new Message(null,MessageType.SUCCESS,null,null);
                         }else{
+                            System.out.println("wrong password");
                             reply = new Message(null,MessageType.ERROR,null,"Wrong Password!");
                         }
                     }
@@ -141,13 +142,17 @@ public class ServerRun extends Thread {
                             }
                         }
                     }
-                    DatagramPacket bigPacket 
-                        = new DatagramPacket(bigByte, bigByte.length, address, port);
+                    System.out.println(recMsg.content);
+                    for ( InetAddress i : sent){
+                        DatagramPacket bigPacket 
+                        = new DatagramPacket(bigByte, bigByte.length, i, 4445);
                     try{
                         socket.send(bigPacket);
                     }catch(Exception err) {
                         System.out.println(err);
                     }
+                    }
+                    
                         break;
                     default:
                         reply = new Message(null,MessageType.ERROR,null,"SUS >:|");
