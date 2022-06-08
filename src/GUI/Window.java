@@ -202,6 +202,7 @@ public class Window implements ActionListener{
         messages = new MessagePanel(cr);
         sendmessages = new SendMessagesPanel(cr);
         home = new HomePanel(cr);
+        plus = new PlusPanel(cr);
         new Window(home);
     }
 }
