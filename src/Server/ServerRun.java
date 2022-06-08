@@ -60,7 +60,7 @@ public class ServerRun extends Thread {
             //arguments of the message to return
             InetAddress address = packet.getAddress();
             int port = packet.getPort();
-            System.out.println("address: "+address+" port: "+port);
+            System.out.println("address: "+address.toString().replace("/","")+" port: "+port);
             
             String received 
               = new String(packet.getData()); 
@@ -144,7 +144,7 @@ public class ServerRun extends Thread {
                     }
                     System.out.println(recMsg.content);
                     for ( InetAddress i : sent){
-                        System.out.println("SENDING address: "+ i +" port: 4445");
+                        System.out.println("SENDING address: "+ i +" port: 2417");
                         DatagramPacket bigPacket 
                         = new DatagramPacket(bigByte, bigByte.length, i, 4445);
                     try{
