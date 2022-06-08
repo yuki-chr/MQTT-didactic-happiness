@@ -19,12 +19,14 @@ public class Users{
 
     public void newUser(String u, String pw){
         this.users.put(u, pw);
+        //System.out.println(u + " " + pw); //CHECK
     }
 
     public String serialize(){
         //return gson.toJson(this);
         StringBuilder sb = new StringBuilder();
         for(String u : users.keySet()){
+            //System.out.println(users.get(u)); //CHECK
             sb.append(u + ":" + users.get(u) + "\n");
         }
         return sb.toString();

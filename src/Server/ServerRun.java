@@ -89,7 +89,8 @@ public class ServerRun extends Thread {
                     
                     //updating the user_list file
                     try {
-                        Files.writeString(Paths.get(file), users.serialize(), StandardCharsets.UTF_8);
+                        Files.writeString(Paths.get(file), users.serialize());
+                        //System.out.println(users.serialize()); //CHECK
                     }
                     catch (IOException ex) {
                         System.out.print("Invalid Path");
